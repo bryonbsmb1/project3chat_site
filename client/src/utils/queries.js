@@ -1,5 +1,28 @@
 import { gql } from '@apollo/client';
 
+
+export const QUERY_POSTS = gql`
+query allPost{
+  posts{
+    _id
+    title
+     authorID{
+      _id
+      name
+      email
+    }
+     categoryID{
+      _id 
+      category
+    }
+  }
+}
+`
+
+
+
+
+
 export const QUERY_PROFILES = gql`
   query allProfiles {
     profiles {
@@ -29,3 +52,6 @@ export const QUERY_ME = gql`
     }
   }
 `;
+// get a post
+
+//get all posts
