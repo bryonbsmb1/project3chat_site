@@ -6,6 +6,7 @@ query allPost{
   posts{
     _id
     title
+    content
      authorID{
       _id
       name

@@ -10,6 +10,7 @@ db.once('open', async () => {
     await Profile.create(profileSeeds);
     await Category.deleteMany({});
     await Category.create(categorySeeds);
+    await Post.deleteMany({});
 
     const categories = await Category.find();
     const profiles = await Profile.find();

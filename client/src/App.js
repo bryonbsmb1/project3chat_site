@@ -54,17 +54,23 @@ const App = () => {
       <Router>
         <ThemeProvider theme={theme}>
           <Navbar/>
-          <Grid container>
-            <Grid item sm={2} xs={2}>
-              <Leftbar />
-            </Grid>
-            <Grid item sm={7} xs={10}>
-              <Feed />
-            </Grid>
-            <Grid item sm={3} xs={3}>
-              <Rightbar />
-            </Grid>
-          </Grid>
+          
+
+          <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/me">
+              <Profile />
+            </Route>
+            <Route exact path="/profiles/:profileId">
+              <Profile />
+            </Route>
         </ThemeProvider>
       </Router>
     </ApolloProvider>
