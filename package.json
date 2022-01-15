@@ -17,7 +17,6 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "@mui/material": "^5.2.8",
-    "graphql": "^16.2.0"
+    
   }
 }

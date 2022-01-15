@@ -7,6 +7,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { Grid } from '@mui/material';
 
 import Home from './pages/Home';
 import Profile from './pages/Profile';
@@ -14,6 +16,12 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+import Navbar from './components/Navbar/index';
+import Leftbar from './components/Leftbar/index';
+import Rightbar from './components/Rightbar/index';
+import Feed from './components/Feed/index';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -36,34 +44,32 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+const theme = createTheme({
+
+});
+
+const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-            <Route exact path="/me">
-              <Profile />
-            </Route>
-            <Route exact path="/profiles/:profileId">
-              <Profile />
-            </Route>
-          </div>
-          <Footer />
-        </div>
+        <ThemeProvider theme={theme}>
+          <Navbar/>
+          <Grid container>
+            <Grid item sm={2} xs={2}>
+              <Leftbar />
+            </Grid>
+            <Grid item sm={7} xs={10}>
+              <Feed />
+            </Grid>
+            <Grid item sm={3} xs={3}>
+              <Rightbar />
+            </Grid>
+          </Grid>
+        </ThemeProvider>
       </Router>
     </ApolloProvider>
-  );
+    
+  )
 }
 
 export default App;
