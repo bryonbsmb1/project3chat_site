@@ -54,8 +54,6 @@ const App = () => {
       <Router>
         <ThemeProvider theme={theme}>
           <Navbar/>
-          
-
           <Route exact path="/">
               <Home />
             </Route>

@@ -1,5 +1,6 @@
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button } from "@mui/material";
 import useStyles from "./styles";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Post = (props) => {
     const classes = useStyles();
@@ -32,6 +33,9 @@ const Post = (props) => {
                                 </Button>
                                 <Button size="small" color="primary">
                                 Share
+                                </Button>
+                                <Button>
+                                    <DeleteIcon/>
                                 </Button>
                             </CardActions>
                         </Card>

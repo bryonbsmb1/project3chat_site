@@ -1,7 +1,16 @@
-import { Container, Typography, InputBase } from "@mui/material";
-import { Mail } from '@mui/icons-material';
+import { Container, Typography, InputBase, Button } from "@mui/material";
+import { Mail, RestaurantRounded } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import { makeStyles } from "@mui/styles";
+import TextField from '@mui/material/TextField';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useState } from "react";
+import Post from "../Post";
+
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -27,16 +36,74 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-const Rightbar = () => {
+const Rightbar = (props) => {
     const classes = useStyles();
+    
+    const [title, setTitle] = useState('');
+    const [content, setConent] = useState('');
+    const [category, setCategory] = useState('');
+
+    const handleInputChange = (event) => {
+        console.log(event.target);
+        if (event.target.name === "title") {
+            setTitle(event.target.value);
+        }
+        if (event.target.name === "content") {
+            setConent(event.target.value);
+        }
+        if (event.target.name === "category") {
+            setCategory(event.target.value);
+        }
+    };
+
+
     return(
         <Container className={classes.container}>
             <Container className={classes.textBox}>
             
-            <InputBase placeholder="What's happening?" className={classes.input} />
+                <TextField 
+                    label="Title" 
+                    variant="outlined" 
+                    fullWidth 
+                    value={title}
+                    onChange={handleInputChange}
+                    name="title"
+                />
+                <br/>
+                <br/>
+                <TextareaAutosize
+                    
+                    aria-label="minimum height"
+                    minRows={3}
+                    placeholder="What's happening?"
+                    style={{ width: '100%' }}
+                    name="content"
+                    value={content}
+                    onChange={handleInputChange}
+                />
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    label="Category"
+                    name="category"
+                    value={category}
+                    onChange={handleInputChange}
+                    >
+                    
+                    {props.categories.map(category => {
+                        return (
+                            <MenuItem value={category._id} key={category._id}>{category.category}</MenuItem>
+                        )
+                    })}
+                    </Select>
+                </FormControl>
 
             </Container>
+            <Button onClick={Post.create}>
             <AddIcon className={classes.add}/>
+            </Button>
         
         </Container>
     );
