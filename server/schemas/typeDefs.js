@@ -9,9 +9,9 @@ const typeDefs = gql`
     _id: ID
     title: String
     content: String
-    authorID: String
+    authorID: Profile
     createdAt: String
-    categoryID: String
+    categoryID: Category
   }
 
   type Profile {
@@ -45,6 +45,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    addPost(
+      title: String,
+      content: String,
+      authorID: String,
+      categoryID: String
+    ): Post
+
     addProfile(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 

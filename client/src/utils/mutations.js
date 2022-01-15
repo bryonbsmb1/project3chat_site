@@ -1,5 +1,28 @@
 import { gql } from '@apollo/client';
 
+
+export const ADD_POST = gql`
+mutation addPost( $title: String, $content: String, $authorID: String,$categoryID: String){
+  addPost(title: $title, content: $content, authorID: $authorID, categoryID: $categoryID){
+    _id
+    title
+    content
+    createdAt
+    categoryID{
+      _id 
+      category
+    }
+    authorID{
+      _id
+      name
+      email
+    }
+  }
+}
+
+`
+
+
 export const ADD_PROFILE = gql`
   mutation addProfile($name: String!, $email: String!, $password: String!) {
     addProfile(name: $name, email: $email, password: $password) {
@@ -43,3 +66,10 @@ export const REMOVE_SKILL = gql`
     }
   }
 `;
+//add a post
+
+// edit a post
+
+// delete a post
+
+// like a post

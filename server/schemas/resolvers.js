@@ -13,11 +13,16 @@ const resolvers = {
     },
 
     posts: async () => {
-      return Post.find();
+      return Post.find()
+      .populate('authorID')
+      .populate('categoryID');
     },
 
     post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+      return Post
+      .findOne({ _id: postId })
+      .populate('authorID')
+      .populate('categoryID');
     },
 
     categories: async () => {
@@ -64,6 +69,14 @@ const resolvers = {
 
       const token = signToken(profile);
       return { token, profile };
+    },
+    addPost: async (parent, {title, content, authorID, categoryID}) => {
+     const post = await Post.create({title, content, authorID, categoryID})
+      
+     const populatedNewPost = await Post.findById(post._id)
+      .populate('authorID')
+      .populate('categoryID')
+     return populatedNewPost
     },
 
     // Add a third argument to the resolver to access data in our `context`
