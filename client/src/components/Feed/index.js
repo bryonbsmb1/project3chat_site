@@ -9,15 +9,17 @@ import useStyles from "./styles";
 //     }
 // }));
 
-const Feed = () => {
+const Feed = (props) => {
+    console.log(props.posts);
     const classes = useStyles();
     return (
         <Container className={classes.feed}>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
+        {props.posts.map(post => {
+            return (
+                <Post data={post} key={post._id}/>
+            )
+            
+        })}
         </Container>
     )
 }

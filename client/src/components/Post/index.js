@@ -1,7 +1,7 @@
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button } from "@mui/material";
 import useStyles from "./styles";
 
-const Post = () => {
+const Post = (props) => {
     const classes = useStyles();
     return (
         <Container className={classes.cardGrid} maxWidth="md">
@@ -11,10 +11,16 @@ const Post = () => {
                         <Card className={classes.card}>
                             <CardContent className={classes.cardContent}>
                                 <Typography gutterBottom variant="h5">
-                                    User
+                                    { props.data.authorID && props.data.authorID.name}
+                                </Typography>
+                                <Typography gutterBottom variant="h5">
+                                    {props.data.title}
                                 </Typography>
                                 <Typography >
-                                    This is an example post. This section is used to express your anger towards Crypto and NFTs
+                                    {props.data.content}
+                                </Typography>
+                                <Typography variant="h7">
+                                    {props.data.categoryID && props.data.categoryID.category}
                                 </Typography>
                             </CardContent>
                             <CardActions>

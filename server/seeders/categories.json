@@ -6,6 +6,22 @@
         "category" : "Solana"
     },
     {
+<<<<<<< HEAD
         "category" : "Cardano"
+=======
+        "category" : "Cardana"
+    },
+    {
+        "category" : "PFP"
+    },
+    {
+        "category" : "Land"
+    },
+    {
+        "category" : "Art"
+    },
+    {
+        "category" : "Domains"
+>>>>>>> d9e9e918974ecde602a76e2ffab1284e3a0127c5
     }
 ]
