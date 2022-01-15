@@ -19,7 +19,7 @@ const Post = (props) => {
                                 <Typography >
                                     {props.data.content}
                                 </Typography>
-                                <Typography>
+                                <Typography variant="h7">
                                     {props.data.categoryID && props.data.categoryID.category}
                                 </Typography>
                             </CardContent>
