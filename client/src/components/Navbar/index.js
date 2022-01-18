@@ -3,6 +3,7 @@ import {
     AppBar,
     Avatar,
     Badge,
+    Button,
     InputBase,
     Toolbar,
     Typography,
@@ -10,7 +11,10 @@ import {
   import { Cancel, Mail, Notifications, Search } from "@mui/icons-material";
   import { makeStyles } from "@mui/styles";
   import { useState } from "react";
-  
+  import Auth from "../../utils/auth"
+  import {
+    Link
+  } from "react-router-dom"
   const useStyles = makeStyles((theme) => ({
     toolbar: {
       display: "flex",
@@ -86,17 +90,25 @@ import {
             
           </div>
           <div className={classes.icons}>
+           { Auth.loggedIn()? (
+            <Button variant="outlined" color="inherit" onClick={Auth.logout}>
+              Logout
+            </Button>
+           ): (
+
+              
+                <Button component={Link} to="/" variant="outlined" color="inherit">
+                  Login
+                </Button>
+             
+
+            
+           )}
+           
+           
+
           
-            <Badge badgeContent={12} color="secondary" className={classes.badge}>
-              <Mail />
-            </Badge>
-            <Badge badgeContent={34} color="secondary" className={classes.badge}>
-              <Notifications />
-            </Badge>
-            <Avatar
-              alt="User"
-              src="https://s.abcnews.com/images/US/Gty_Hacker_Group_Anonymous_er_160318_4x3t_992.jpg"
-            />
+           
           </div>
         </Toolbar>
       </AppBar>

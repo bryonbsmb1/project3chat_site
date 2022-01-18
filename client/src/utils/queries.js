@@ -20,6 +20,16 @@ query allPost{
 }
 `
 
+export const QUERY_CATEGORIES = gql`
+  query all_categories {
+    categories{
+      _id
+      category
+    }
+  }
+
+`
+
 
 
 

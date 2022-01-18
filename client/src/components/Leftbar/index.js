@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import { ArrowRight } from "@mui/icons-material";
+import { ArrowRight, Category } from "@mui/icons-material";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -39,39 +39,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Leftbar = () => {
+const Leftbar = (props) => {
   const classes = useStyles();
-  return (
+  
+  return ( 
     <Container className={classes.container}>
-      <div className={classes.item}>
-        <ArrowRight className={classes.icon} />
-        <Typography className={classes.text}>Ethereum</Typography>
-      </div>
-      <div className={classes.item}>
-        <ArrowRight className={classes.icon} />
-        <Typography className={classes.text}>Solana</Typography>
-      </div>
-      <div className={classes.item}>
-        <ArrowRight className={classes.icon} />
-        <Typography className={classes.text}>Cardano</Typography>
-      </div>
-      <div className={classes.item}>
-        <ArrowRight className={classes.icon} />
-        <Typography className={classes.text}>PFP</Typography>
-      </div>
-      <div className={classes.item}>
-        <ArrowRight className={classes.icon} />
-        <Typography className={classes.text}>Land</Typography>
-      </div>
-      <div className={classes.item}>
-        <ArrowRight className={classes.icon} />
-        <Typography className={classes.text}>Art</Typography>
-      </div>
-      <div className={classes.item}>
-        <ArrowRight className={classes.icon} />
-        <Typography className={classes.text}>Domains</Typography>
-      </div>
       
+      {props.categories.map(category => {
+        return (
+          <div className={classes.item} key={category._id}>
+            <ArrowRight className={classes.icon} />
+            <Typography className={classes.text}>{category.category}</Typography>
+          </div>
+        )
+      })}
     </Container>
   );
 };
