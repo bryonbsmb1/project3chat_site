@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '' , submit:''});
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -36,7 +37,7 @@ const Login = (props) => {
     // clear form values
     setFormState({
       email: '',
-      password: '',
+      password: '',submit:''
     });
   };
 
@@ -53,22 +54,39 @@ const Login = (props) => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                <input
+                 
+                 
+                 <TextField id="outlined-basic" label="Your email" variant="outlined"   value={formState.email}
+                  onChange={handleChange} name="email"/>
+
+                 <TextField id="outlined-basic" label="password" variant="outlined"   value={formState.password}
+                  onChange={handleChange} name="password"/>
+
+                {/* <Stack spacing={2} direction="row">
+                  <Button variant="text">Text</Button>
+                  <Button variant="contained">Contained</Button>
+                  <Button variant="outlined">Outlined</Button>
+                  value={formState.submit}
+                  onChange={handleChange} name="submit"
+                </Stack> */}
+
+
+                {/* <input
                   className="form-input"
                   placeholder="Your email"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
-                />
-                <input
+                /> */}
+                {/* <input
                   className="form-input"
                   placeholder="******"
                   name="password"
                   type="password"
                   value={formState.password}
-                  onChange={handleChange}
-                />
+                  onChange={handleChange} */}
+                {/* /> */}
                 <button
                   className="btn btn-block btn-info"
                   style={{ cursor: 'pointer' }}
