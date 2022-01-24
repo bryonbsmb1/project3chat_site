@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Auth from '../utils/auth';
 
 const Login = (props) => {
@@ -62,12 +63,21 @@ const Login = (props) => {
                  <TextField id="outlined-basic" label="password" variant="outlined"   value={formState.password}
                   onChange={handleChange} name="password"/>
 
+                
+
+    
+  
+
+                
+                
+                
+                
                 {/* <Stack spacing={2} direction="row">
-                  <Button variant="text">Text</Button>
-                  <Button variant="contained">Contained</Button>
-                  <Button variant="outlined">Outlined</Button>
-                  value={formState.submit}
-                  onChange={handleChange} name="submit"
+                  
+                  <Button variant="contained" value={formState.submit}
+                  onChange={handleChange} name="submit">Submit</Button>
+                  
+                  
                 </Stack> */}
 
 
